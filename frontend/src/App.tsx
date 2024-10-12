@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Admin, Resource, CustomRoutes } from 'react-admin'; 
+import { Admin, CustomRoutes, Resource } from 'react-admin'; 
 import authProvider from './authProvider';
 import dataProvider from './dataProvider';
 import Dashboard from './components/Dashboard';
@@ -8,44 +8,40 @@ import AdminDashboard from './pages/AdminDashboard';
 import UserDashboard from './pages/UserDashboard';    
 import { Route } from 'react-router-dom';             
 import { DonacionesLineaList, DonacionesLineaCreate, DonacionesLineaEdit } from './pages/DonacionesLinea';
-import { DonacionesEspecieList, DonacionesEspecieCreate,
-  DonacionesEspecieEdit } from './pages/DonacionesEspecie';
+import { DonacionesEspecieList, DonacionesEspecieCreate, DonacionesEspecieEdit } from './pages/DonacionesEspecie';
 import EstadisticasDonaciones from './pages/EstadisticasDonaciones';
+import { Layout } from './Layout';
+import theme from './customTheme'; // Import your custom theme
 
 const App = () => {
   const [role, setRole] = React.useState<string | null>(null);
-  //const role = localStorage.getItem('role');  // Obtener el rol del usuario
 
-  // UseEffect para obtener el rol desde localStorage cuando el componente se monta
   React.useEffect(() => {
-    const storedRole = localStorage.getItem('role');  // Obtener el rol del usuario
-    setRole(storedRole);  // Establecer el rol en el estado
-  }, []);  // Se ejecuta una vez cuando el componente se monta
-
-  // if (!role) {
-  //  return <div>Loading...</div>;  // Mientras se carga el rol, mostrar un mensaje de carga
-  // }
+    const storedRole = localStorage.getItem('role');  // Get the user role from local storage
+    setRole(storedRole);  // Set the role in state
+  }, []);  // Runs once when the component mounts
 
   return (
-    <Admin
+    <Admin 
       authProvider={authProvider}
       dataProvider={dataProvider}
-      dashboard={Dashboard}  // Usar Dashboard para manejar la redirección
-      loginPage={LoginPage}  // Página de login
+      theme={theme}  // Use your custom theme here
+      dashboard={Dashboard}  // Use Dashboard for handling redirection
+      loginPage={LoginPage}  // Login page
+      layout={Layout}
     >
       <CustomRoutes>
-        {/* Rutas personalizadas para admin y user */}
+        {/* Custom routes for admin and user */}
         <Route path="/admin-dashboard" element={<AdminDashboard />} />  
         <Route path="/user-dashboard" element={<UserDashboard />} />    
       </CustomRoutes>
 
-      {/* Recursos del CRM solo para admin */}
+      {/* Resources for CRM only for admin */}
       {role === 'admin' && (
         <>
           <Resource 
             name="donaciones-linea"
             list={DonacionesLineaList}
-            //create={DonacionesLineaCreate}
             edit={DonacionesLineaEdit}
           />
           <Resource 
@@ -55,17 +51,17 @@ const App = () => {
             edit={DonacionesEspecieEdit}
           />
           <Resource 
-            name="estadisticas-donaciones"
+            name="estadisticas"
             list={EstadisticasDonaciones}
           />
         </>
       )}
       {role === 'user' && (
-      <>
-        {/* Aquí puedes agregar recursos o componentes que sólo quieras que vean los usuarios */}
-        <Route path="/user-dashboard" element={<UserDashboard />} />    
-      </>
-    )}
+        <>
+          {/* Here you can add resources or components that only users can see */}
+          <Route path="/user-dashboard" element={<UserDashboard />} />    
+        </>
+      )}
     </Admin>
   );
 };
