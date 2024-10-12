@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+backend/node_modules
+frontend/node_modules
+
 node_modules
 dist
 build/
@@ -37,3 +40,4 @@ data/db/
 *.lock
 
 backend/.env
+frontend/.env

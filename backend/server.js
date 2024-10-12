@@ -1,3 +1,5 @@
+//server.js
+//codigo de sanders
 const https = require('https'); // Para crear un servidor HTTPS
 const fs = require('fs'); // Maneja archivos del sistema
 
@@ -11,12 +13,21 @@ const bcrypt = require('bcrypt');
 const verifyRole = require('./middlewares/verifyRole');
 
 const User = require('./models/userModel');
+const { sendThankYouEmail } = require('./sendEmail'); 
 
 const JWT_SECRET = 'mysecretkey';
 
 
 const app = express();
 const PORT = 5001;
+
+// backend/server.js
+
+require('dotenv').config();
+// otras configuraciones
+
+
+
 
 // Middlewares
 //app.use(cors());
@@ -145,6 +156,10 @@ app.post('/donaciones-linea', authenticateToken, verifyRole('admin'), async (req
     try {
         const nuevaDonacion = new DonacionLinea(req.body);
         await nuevaDonacion.save();
+
+        sendThankYouEmail(req.body.donorName, req.user.email);
+
+    
         res.status(201).json(nuevaDonacion);
     } catch (err) {
         res.status(400).json({ error: err.message });
@@ -188,6 +203,9 @@ app.post('/donaciones-especie', authenticateToken, verifyRole('admin'), async (r
         });
 
         await nuevaDonacion.save();
+
+        sendThankYouEmail(req.body.donorName, req.user.email);
+
         res.status(201).json(nuevaDonacion);
     } catch (err) {
         console.error('Error al crear la donación:', err);
@@ -239,6 +257,9 @@ app.post('/user-donations', authenticateToken, verifyRole('user'), async (req, r
             section: req.body.section || 'general' // Añadir una sección si es necesario
         });
         await nuevaDonacion.save();
+
+        sendThankYouEmail(req.body.donorName, req.user.email);
+
         res.status(201).json(nuevaDonacion);
     } catch (err) {
         res.status(400).json({ error: err.message });
