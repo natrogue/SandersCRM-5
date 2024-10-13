@@ -46,9 +46,9 @@ const UserDashboard = () => {
                 {/* Sección "¿Quiénes Somos?" y tarjeta de Objetivo, Misión y Visión */}
                 <Grid item xs={12} sm={6}>
                     <Paper sx={{ padding: 4, mt: 4 }}>
-                        <Card sx={{ mb: 2 }}>
+                        <Card sx={{ mb: 2, backgroundColor: '#f1f4f9' }}>
                             <CardContent>
-                                <Typography variant="h5" component="div" gutterBottom>
+                                <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: 'bold'}} >
                                     ¿Quiénes Somos?
                                 </Typography>
                                 <Typography variant="body1" color="textSecondary">
@@ -61,23 +61,23 @@ const UserDashboard = () => {
                         </Card>
 
                         {/* Tarjeta consolidada de Objetivo, Misión y Visión */}
-                        <Card sx={{ mt: 2 }}>
+                        <Card sx={{ mt: 2 , backgroundColor: '#f1f4f9'}}>
                             <CardContent>                                
-                                <Typography variant="h6" component="div" gutterBottom>
+                                <Typography variant="h6" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                                     Objetivo
                                 </Typography>
                                 <Typography variant="body1" color="textSecondary" sx={{ mb: 2 }}>
                                     Nuestro objetivo social se basa en desarrollar proyectos para contribuir a enfrentar los rezagos sociales en materia de salud sexual y reproductiva, nutrición comunitaria y abasto de agua.
                                 </Typography>
 
-                                <Typography variant="h6" component="div" gutterBottom>
+                                <Typography variant="h6" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                                     Misión
                                 </Typography>
                                 <Typography variant="body1" color="textSecondary" sx={{ mb: 2 }}>
                                     Fomentar la salud sexual y reproductiva, la sana alimentación y el abasto de agua potable entre grupos más vulnerables de la sociedad, para prevenir y incidencia y prevalencia de embarazos no planificados, infecciones de transmisión sexual, así como padecimientos asociados a la malnutrición y al consumo de agua contaminada.
                                 </Typography>
 
-                                <Typography variant="h6" component="div" gutterBottom>
+                                <Typography variant="h6" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                                     Visión
                                 </Typography>
                                 <Typography variant="body1" color="textSecondary" sx={{ mb: 2 }}>
@@ -90,8 +90,8 @@ const UserDashboard = () => {
 
                 {/* Sección de Donación */}
                 <Grid item xs={12} sm={6}>
-                    <Paper sx={{ padding: 4, mt: 4 }}>
-                        <Typography variant="h4" gutterBottom>
+                    <Paper sx={{ padding: 4, mt: 4, backgroundColor: '#fcddc5' }}>
+                        <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold'}}>
                             Fundación Sanders - Agua para todos
                         </Typography>
                         <Box component="form" sx={{ mt: 2 }}>
@@ -102,6 +102,9 @@ const UserDashboard = () => {
                                 onChange={(e) => setDonorName(e.target.value)}
                                 margin="normal"
                                 disabled={loading} // Deshabilitar mientras se envía el formulario
+                                InputProps={{
+                                    style: { backgroundColor: 'white' }, // Establecer fondo blanco
+                                  }}
                             />
                             <TextField
                                 fullWidth
@@ -111,6 +114,9 @@ const UserDashboard = () => {
                                 margin="normal"
                                 type="number"
                                 disabled={loading} // Deshabilitar mientras se envía el formulario
+                                InputProps={{
+                                    style: { backgroundColor: 'white' }, // Establecer fondo blanco
+                                  }}
                             />
                             <Button
                                 fullWidth

@@ -29,6 +29,7 @@ const App = () => {
       dashboard={Dashboard}  // Use Dashboard for handling redirection
       loginPage={LoginPage}  // Login page
       layout={Layout}
+      
     >
       <CustomRoutes>
         {/* Custom routes for admin and user */}
@@ -43,12 +44,14 @@ const App = () => {
             name="donaciones-linea"
             list={DonacionesLineaList}
             edit={DonacionesLineaEdit}
+            options={{ label: 'Donaciones Online' }}
           />
           <Resource 
             name="donaciones-especie"
             list={DonacionesEspecieList}
             create={DonacionesEspecieCreate}
             edit={DonacionesEspecieEdit}
+            options={{ label: 'Donaciones Especie' }}
           />
           <Resource 
             name="estadisticas"
