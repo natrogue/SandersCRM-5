@@ -130,7 +130,7 @@ const UserDashboard = () => {
                         <img 
                             src="../images/cisternaSanders.jpg" 
                             alt="Descripción de la imagen" 
-                            style={{ maxWidth: '100%', height: 'auto' }} 
+                            style={{ maxWidth: '100%', height: '450px' }} 
                         />
                     </Box>
                 </Grid>

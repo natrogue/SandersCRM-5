@@ -90,7 +90,7 @@ const theme = createTheme({
                             transform: 'translateX(5px)', // Additional shift when selected
                         },
                         '&:active': {
-                            backgroundColor: '#003a7e', // Color when pressed
+                            backgroundColor: '#003a7e', // Color when pressed      
                         },
                     },
                 },
