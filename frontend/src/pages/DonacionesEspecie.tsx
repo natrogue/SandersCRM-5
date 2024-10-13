@@ -1,8 +1,10 @@
 import React from 'react';
 import { useMediaQuery, Theme } from '@mui/material';
-import { Edit, List, Datagrid, TextField, SimpleList, Create, 
+import {
+    Edit, List, Datagrid, TextField, SimpleList, Create,
     TextInput, SimpleForm, NumberInput, required, DateInput, DateField,
-    NumberField } from 'react-admin';
+    NumberField
+} from 'react-admin';
 
 export const DonacionesEspecieList = () => {
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down('sm'));
@@ -15,12 +17,22 @@ export const DonacionesEspecieList = () => {
                     tertiaryText={record => new Date(record.date).toLocaleDateString()}
                 />
             ) : (
-                <Datagrid>
+                <Datagrid
+                    sx={{
+                        '& .RaDatagrid-headerCell': {
+                            fontWeight: 'bold',
+                            backgroundColor: '#c6d2e7',
+                        },
+                        '& .RaDatagrid-row': {
+                            backgroundColor: '#F1F4F9',
+                        },
+                    }}
+                >
                     <TextField source="id" label="ID" />
                     <TextField source="donorName" label="Nombre" />
                     <NumberField source="amount" label="Cantidad" />
                     <DateField source="date" label="Fecha" />
-                    <TextField source="event" label="Evento" /> {/* Changed 'event' instead of 'section' */}
+                    <TextField source="event" label="Evento" />
                 </Datagrid>
             )}
         </List>
@@ -31,9 +43,9 @@ export const DonacionesEspecieCreate = () => (
     <Create>
         <SimpleForm>
             <TextInput source="donorName" label="Nombre" validate={[required()]} />
-            <NumberInput source="amount" label="Cantidad" validate={[required()]} /> {/* Changed 'item' to 'amount' */}
-            <DateInput source="date" label="Fecha" />  {/* Date field */}
-            <TextInput source="event" label="Evento" />  {/* New 'event' field */}
+            <NumberInput source="amount" label="Cantidad" validate={[required()]} />
+            <DateInput source="date" label="Fecha" />
+            <TextInput source="event" label="Evento" />
         </SimpleForm>
     </Create>
 );
@@ -48,3 +60,4 @@ export const DonacionesEspecieEdit = () => (
         </SimpleForm>
     </Edit>
 );
+

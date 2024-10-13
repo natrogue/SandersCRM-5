@@ -7,9 +7,9 @@ const AdminDashboard = () => (
     <Grid item xs={12} md={6}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Card>
+          <Card style={{ backgroundColor: '#f1f4f9' }}>
             <CardContent>
-              <Typography variant="h5" component="div" gutterBottom>
+              <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                 ¿Quiénes Somos?
               </Typography>
               <Typography variant="body1" color="textSecondary">
@@ -24,9 +24,9 @@ const AdminDashboard = () => (
 
         {/* Tarjeta de Objetivo */}
         <Grid item xs={12}>
-          <Card style={{ height: '100%' }}>
+          <Card style={{ height: '100%', backgroundColor: '#f1f4f9' }}>
             <CardContent>
-              <Typography variant="h5" component="div" gutterBottom>
+              <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                 Objetivo
               </Typography>
               <Typography variant="body1" color="textSecondary">
@@ -39,9 +39,9 @@ const AdminDashboard = () => (
         {/* Tarjetas de Misión y Visión en horizontal */}
         <Grid container item xs={12} spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Card style={{ height: '100%' }}>
+            <Card style={{ height: '100%', backgroundColor: '#f1f4f9' }}>
               <CardContent>
-                <Typography variant="h5" component="div" gutterBottom>
+                <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                   Misión
                 </Typography>
                 <Typography variant="body1" color="textSecondary">
@@ -52,9 +52,9 @@ const AdminDashboard = () => (
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Card style={{ height: '100%' }}>
+            <Card style={{ height: '100%', backgroundColor: '#f1f4f9' }}>
               <CardContent>
-                <Typography variant="h5" component="div" gutterBottom>
+                <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: 'bold'}}>
                   Visión
                 </Typography>
                 <Typography variant="body1" color="textSecondary">
@@ -73,7 +73,7 @@ const AdminDashboard = () => (
         <Grid item xs={12}>
           <Card style={{ backgroundColor: '#FDE8D8' }}> {/* Color de fondo Donaciones */}
             <CardContent>
-              <Typography variant="h5" component="div">
+              <Typography variant="h5" component="div" sx={{ fontWeight: 'bold'}}>
                 Donaciones en especie
               </Typography>
             </CardContent>
@@ -93,7 +93,7 @@ const AdminDashboard = () => (
         <Grid item xs={12}>
           <Card style={{ backgroundColor: '#FDE8D8' }}> {/* Color de fondo Donaciones */}
             <CardContent>
-              <Typography variant="h5" component="div">
+              <Typography variant="h5" component="div" sx={{ fontWeight: 'bold'}}>
                 Donaciones en línea
               </Typography>
             </CardContent>

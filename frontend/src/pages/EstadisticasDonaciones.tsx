@@ -40,52 +40,61 @@ const EstadisticasDonaciones = () => {
 
     return (
         <Box sx={{ padding: 3 }}>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold'}}>
                 Estadísticas de Donaciones
             </Typography>
 
-            {/* Tarjetas de estadísticas adicionales */}
-            <Grid container spacing={3} sx={{ mb: 3 }}>
-                <Grid item xs={12} md={3}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h6">Total en Línea</Typography>
-                            <Typography variant="h5">${totalDonacionesLinea.toFixed(2)}</Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h6">Total en Especie</Typography>
-                            <Typography variant="h5">${totalDonacionesEspecie.toFixed(2)}</Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h6">Número de Donantes</Typography>
-                            <Typography variant="h5">{totalDonantes}</Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} md={3}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h6">Promedio de Donación</Typography>
-                            <Typography variant="h5">${promedioDonacion}</Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid>
+{/* Tarjetas de estadísticas adicionales */}
+<Grid container spacing={3} sx={{ mb: 3 }}>
+    <Grid item xs={12} md={3}>
+        <Card sx={{ backgroundColor: '#fcddc5' }}>
+            <CardContent>
+                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Total en Línea
+                </Typography>
+                <Typography variant="h5">${totalDonacionesLinea.toFixed(2)}</Typography>
+            </CardContent>
+        </Card>
+    </Grid>
+    <Grid item xs={12} md={3}>
+        <Card sx={{ backgroundColor: '#fcddc5' }}>
+            <CardContent>
+                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Total en Especie
+                </Typography>
+                <Typography variant="h5">${totalDonacionesEspecie.toFixed(2)}</Typography>
+            </CardContent>
+        </Card>
+    </Grid>
+    <Grid item xs={12} md={3}>
+        <Card sx={{ backgroundColor: '#fcddc5' }}>
+            <CardContent>
+                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Número de Donantes
+                </Typography>
+                <Typography variant="h5">{totalDonantes}</Typography>
+            </CardContent>
+        </Card>
+    </Grid>
+    <Grid item xs={12} md={3}>
+        <Card sx={{ backgroundColor: '#fcddc5' }}>
+            <CardContent>
+                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Promedio de Donación
+                </Typography>
+                <Typography variant="h5">${promedioDonacion}</Typography>
+            </CardContent>
+        </Card>
+    </Grid>
+</Grid>
+
 
             {/* Gráficos */}
             <Grid container spacing={3}>
                 {/* Gráfico de pastel */}
                 <Grid item xs={12} md={6}>
                     <Paper sx={{ padding: 3 }}>
-                        <Typography variant="h6">Proporción de Donaciones</Typography>
+                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Proporción de Donaciones</Typography>
                         <ResponsiveContainer width="100%" height={300}>
                             <PieChart>
                                 <Pie
@@ -112,7 +121,7 @@ const EstadisticasDonaciones = () => {
                 {/* Gráfico de barras */}
                 <Grid item xs={12} md={6}>
                     <Paper sx={{ padding: 3 }}>
-                        <Typography variant="h6">Total de Cantidades Donadas</Typography>
+                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Total de Cantidades Donadas</Typography>
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={dataForBarChart}>
                                 <CartesianGrid strokeDasharray="3 3" />

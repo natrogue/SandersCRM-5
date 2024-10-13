@@ -14,7 +14,17 @@ export const DonacionesLineaList = () => {
                     tertiaryText={record => new Date(record.date).toLocaleDateString()}
                 />
             ) : (
-                <Datagrid>
+                <Datagrid
+                    sx={{
+                        '& .RaDatagrid-headerCell': {
+                            fontWeight: 'bold',
+                            backgroundColor: '#c6d2e7',
+                        },
+                        '& .RaDatagrid-row': {
+                            backgroundColor: '#F1F4F9',
+                        },
+                    }}
+                >
                     <TextField source="id" label="ID" />  {/* Mapea el id desde _id */}
                     <TextField source="donorName" label="Nombre" />  {/* Nombre correcto del campo */}
                     <NumberField source="amount" label="Cantidad" />  {/* Nombre correcto del campo */}

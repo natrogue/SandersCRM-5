@@ -67,14 +67,15 @@ const theme = createTheme({
             styleOverrides: {
                 paper: {
                     backgroundColor: '#90A6CC', // Background color for the sidebar
-                    color: '#000000', // Text color in sidebar
+                    color: '#003a7e', // Text color in sidebar
                     paddingTop: '20px',
                     overflow: 'visible', // Ensure content does not get cut off
                     '& a': {
-                        color: '#textSecondary', // Link color in sidebar (black)
+                        color: '#005f8a', // Link color in sidebar
                         textDecoration: 'none', // Remove underline
                         padding: '10px 15px', // Add padding to links
                         display: 'block', // Make links block elements
+                        fontWeight: 'bold', // Make font bold
                         transition: 'background-color 0.2s, font-size 0.2s, transform 0.2s', // Smooth transition for background color, font size, and transform
                         borderRadius: '0 20px 20px 0', // Round right corners
                         '&:hover': {
@@ -84,13 +85,13 @@ const theme = createTheme({
                             transform: 'translateX(0px)', // Additional shift on hover
                         },
                         '&.Mui-selected': { // Active state for selected item
-                            backgroundColor: '#005f8a', // Color when selected
+                            backgroundColor: '#005f8a !important', // Color when selected
                             fontSize: '18px', // Keep font size larger when selected
                             paddingLeft: '20px', // Shift to the right when selected
                             transform: 'translateX(5px)', // Additional shift when selected
                         },
                         '&:active': {
-                            backgroundColor: '#003a7e', // Color when pressed      
+                            backgroundColor: '#003a7e', // Color when pressed   
                         },
                     },
                 },
@@ -100,3 +101,4 @@ const theme = createTheme({
 });
 
 export default theme;
+
