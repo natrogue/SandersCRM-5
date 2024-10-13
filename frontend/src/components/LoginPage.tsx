@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLogin, useNotify } from 'react-admin';
-import { TextField, Button, Container, Typography, Box, Paper, Grid, Avatar, 
-    CircularProgress } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Paper, Grid, Avatar, CircularProgress } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,28 +31,31 @@ const LoginPage = () => {
 
             setLoading(false);
         } catch (error) {
-            notify('Email o password incorrecto');
+            notify('Email o contraseña incorrecto');
             setLoading(false);
         }
     };
 
     return (
-        <Container maxWidth={false}
-        sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
-            paddingBottom: 30,
-        }}>
-            <Paper elevation={3} sx={{ padding: 4, mt: 8 }}>
+        <Container
+            maxWidth={false}
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+                backgroundColor: '#003a7e', // Color de fondo del login
+                padding: 0, // Eliminar padding
+                margin: 0, // Eliminar margin
+            }}
+        >
+            <Paper elevation={3} sx={{ padding: 4, backgroundColor: '#C7D2E5', position: 'relative' }}>
                 <Grid container direction="column" alignItems="center">
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5" gutterBottom>
-                        Fundación Sanders
-                    </Typography>
+
+                    {/* Agrega el logo */}
+                    <Box component="img" src="../images/logoSanders.png" alt="Logo Fundación Sanders" sx={{ width: '270px', mb: 3 }} />
+
+
                     <Box component="form" onSubmit={submit} sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"

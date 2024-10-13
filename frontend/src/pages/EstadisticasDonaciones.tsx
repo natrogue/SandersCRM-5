@@ -3,7 +3,7 @@ import { useDataProvider } from 'react-admin';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { Typography, Box, Paper, Grid } from '@mui/material';
 
-const COLORS = ['#0088FE', '#FF8042'];
+const COLORS = ['#90a6cc', '#de4e32'];
 
 const EstadisticasDonaciones = () => {
     const dataProvider = useDataProvider();
@@ -53,7 +53,7 @@ const EstadisticasDonaciones = () => {
                                     cx="50%"
                                     cy="50%"
                                     outerRadius={100}
-                                    fill="#8884d8"
+                                    fill="#de4e32"
                                     label
                                 >
                                     {dataForPieChart.map((entry, index) => (
@@ -78,7 +78,7 @@ const EstadisticasDonaciones = () => {
                                 <YAxis />
                                 <Tooltip />
                                 <Legend />
-                                <Bar dataKey="amount" fill="#8884d8" />
+                                <Bar dataKey="amount" fill="#f17f29" />
                             </BarChart>
                         </ResponsiveContainer>
                     </Paper>
