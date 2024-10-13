@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLogin, useNotify } from 'react-admin';
-import { TextField, Button, Container, Typography, Box, Paper, Grid, Avatar, CircularProgress } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { TextField, Button, Container, Box, Paper, Grid, CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -44,42 +43,46 @@ const LoginPage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100vh',
-                backgroundColor: '#003a7e', // Color de fondo del login
-                padding: 0, // Eliminar padding
-                margin: 0, // Eliminar margin
+                backgroundColor: '#C7D2E5',
+                padding: 0,
+                margin: 0,
             }}
         >
-            <Paper elevation={3} sx={{ padding: 4, backgroundColor: '#C7D2E5', position: 'relative' }}>
+            <Paper elevation={3} sx={{ padding: 4, backgroundColor: '#003a7e', position: 'relative' }}>
                 <Grid container direction="column" alignItems="center">
-
                     {/* Agrega el logo */}
                     <Box component="img" src="../images/logoSanders.png" alt="Logo Fundación Sanders" sx={{ width: '270px', mb: 3 }} />
-
 
                     <Box component="form" onSubmit={submit} sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             fullWidth
                             id="email"
-                            label="Correo electrónico"
+                            placeholder="Correo electrónico"
                             name="email"
                             autoComplete="email"
                             autoFocus
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                            InputProps={{
+                                style: { backgroundColor: '#fff' }, // Fondo blanco
+                            }}
                         />
                         <TextField
                             margin="normal"
                             fullWidth
                             name="password"
-                            label="Contraseña"
+                            placeholder="Contraseña"
                             type="password"
                             id="password"
                             autoComplete="current-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            InputProps={{
+                                style: { backgroundColor: '#fff' }, // Fondo blanco
+                            }}
                         />
                         <Button
                             type="submit"

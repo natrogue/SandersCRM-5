@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDataProvider } from 'react-admin';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
-import { Typography, Box, Paper, Grid } from '@mui/material';
+import { Typography, Box, Paper, Grid, Card, CardContent } from '@mui/material';
 
 const COLORS = ['#90a6cc', '#de4e32'];
 
@@ -32,13 +32,55 @@ const EstadisticasDonaciones = () => {
         { name: 'Especie', amount: donacionesEspecie.reduce((total, item) => total + item.amount, 0) }
     ];
 
+    // Calcular estadísticas adicionales
+    const totalDonacionesLinea = donacionesLinea.reduce((total, item) => total + item.amount, 0);
+    const totalDonacionesEspecie = donacionesEspecie.reduce((total, item) => total + item.amount, 0);
+    const totalDonantes = new Set([...donacionesLinea, ...donacionesEspecie].map(d => d.donorId)).size;
+    const promedioDonacion = ((totalDonacionesLinea + totalDonacionesEspecie) / (donacionesLinea.length + donacionesEspecie.length) || 0).toFixed(2);
+
     return (
         <Box sx={{ padding: 3 }}>
             <Typography variant="h4" gutterBottom>
                 Estadísticas de Donaciones
             </Typography>
 
-            {/* Pie Chart y Bar Chart juntos */}
+            {/* Tarjetas de estadísticas adicionales */}
+            <Grid container spacing={3} sx={{ mb: 3 }}>
+                <Grid item xs={12} md={3}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6">Total en Línea</Typography>
+                            <Typography variant="h5">${totalDonacionesLinea.toFixed(2)}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6">Total en Especie</Typography>
+                            <Typography variant="h5">${totalDonacionesEspecie.toFixed(2)}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6">Número de Donantes</Typography>
+                            <Typography variant="h5">{totalDonantes}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6">Promedio de Donación</Typography>
+                            <Typography variant="h5">${promedioDonacion}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+
+            {/* Gráficos */}
             <Grid container spacing={3}>
                 {/* Gráfico de pastel */}
                 <Grid item xs={12} md={6}>

@@ -6,7 +6,16 @@ import Typography from '@mui/material/Typography'; // Importar Typography de MUI
 import Grid from '@mui/material/Grid'; // Importar Grid de MUI
 
 const Sidebar = (props: any) => (
-  <RASidebar {...props} style={{ marginTop: '20px',overflow: 'visible' }} />
+  <RASidebar 
+    {...props} 
+    style={{ 
+      marginTop: '20px',
+      overflow: 'visible',
+      backgroundColor: '#C7D2E5', // Cambia el color de fondo aquí
+      borderRadius: '8px', // Esquinas redondeadas, si deseas
+      width: '250px', // Ajusta el ancho según sea necesario
+    }} 
+  />
 );
 
 const Footer = () => (
