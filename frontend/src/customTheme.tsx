@@ -37,10 +37,10 @@ const theme = createTheme({
                     borderRadius: '8px',
                     padding: '8px 16px',
                     textTransform: 'none',
-                    backgroundColor: '#90A6CC', // Set the default button color
+                    backgroundColor: '#F48D3E', // Set the default button color
                     color: '#ffffff', // Text color for buttons
                     '&:hover': {
-                        backgroundColor: '#007bb5', // Color on hover
+                        backgroundColor: '#DE4E32', // Color on hover
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Shadow on hover
                     },
                     '&:active': {

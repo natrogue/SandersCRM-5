@@ -71,7 +71,7 @@ const AdminDashboard = () => (
     <Grid item xs={12} md={6}>
       <Grid container direction="column" spacing={2}>
         <Grid item xs={12}>
-          <Card>
+          <Card style={{ backgroundColor: '#FDE8D8' }}> {/* Color de fondo Donaciones */}
             <CardContent>
               <Typography variant="h5" component="div">
                 Donaciones en especie
@@ -91,7 +91,7 @@ const AdminDashboard = () => (
         </Grid>
 
         <Grid item xs={12}>
-          <Card>
+          <Card style={{ backgroundColor: '#FDE8D8' }}> {/* Color de fondo Donaciones */}
             <CardContent>
               <Typography variant="h5" component="div">
                 Donaciones en línea
@@ -124,4 +124,5 @@ const AdminDashboard = () => (
 );
 
 export default AdminDashboard;
+
 
