@@ -29,7 +29,7 @@ export const DonacionesLineaList = () => {
                     <TextField source="donorName" label="Nombre" />  {/* Nombre correcto del campo */}
                     <NumberField source="amount" label="Cantidad" />  {/* Nombre correcto del campo */}
                     <DateField source="date" label="Fecha" />  {/* Nombre correcto del campo */}
-                    <TextField source="section" label="Sección" />  {/* Nombre correcto del campo */}
+                    <TextField source="section" label="Causa" />  {/* Nombre correcto del campo */}
                 </Datagrid>
             )}
         </List>
@@ -43,7 +43,7 @@ export const DonacionesLineaCreate = () => (
             <TextInput source="donorName" label="Nombre" validate={[required()]} />  {/* Nombre correcto del campo */}
             <NumberInput source="amount" label="Cantidad" validate={[required()]} />  {/* Nombre correcto del campo */}
             <DateInput source="date" label="Fecha" />  {/* Nombre correcto del campo */}
-            <TextInput source="section" label="Sección" />  {/* Añadido el campo 'Section' */}
+            <TextInput source="section" label="Causa" />  {/* Añadido el campo 'Section' */}
         </SimpleForm>
     </Create>
 );
@@ -55,7 +55,7 @@ export const DonacionesLineaEdit = () => (
             <TextInput source="donorName" label="Nombre" validate={[required()]} />  {/* Nombre correcto del campo */}
             <NumberInput source="amount" label="Cantidad" validate={[required()]} />  {/* Nombre correcto del campo */}
             <DateInput source="date" label="Fecha" />  {/* Nombre correcto del campo */}
-            <TextInput source="section" label="Sección" />  {/* Añadido el campo 'Section' */}
+            <TextInput source="section" label="Causa" />  {/* Añadido el campo 'Section' */}
         </SimpleForm>
     </Edit>
 );

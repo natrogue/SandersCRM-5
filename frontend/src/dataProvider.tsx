@@ -32,6 +32,25 @@ const dataProvider: DataProvider = {
         }));
     },
 
+    deleteMany: (resource, params) => {
+        const url = `${apiUrl}/${resource}`;
+        
+        return httpClient(url, {
+            method: 'DELETE',
+            body: JSON.stringify({ ids: params.ids }), // Enviar los IDs como array en el cuerpo de la solicitud
+            headers: new Headers({ 
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Añadir el token en los headers
+            }),
+        }).then(({ json }) => ({
+            data: params.ids, // Devolver los IDs de los registros eliminados
+        })).catch(error => {
+            console.error('Error al eliminar los registros:', error);
+            return Promise.reject(error); // Manejar el error correctamente
+        });
+    },
+
+
     create: <RecordType extends Omit<RaRecord, 'id'> = any, ResultRecordType extends RaRecord = RecordType & { id: Identifier; }>(
         resource: string,
         params: { data: RecordType; }
@@ -69,9 +88,6 @@ const dataProvider: DataProvider = {
         throw new Error('Function not implemented.');
     },
     updateMany: function <RecordType extends RaRecord = any>(resource: string, params: UpdateManyParams): Promise<UpdateManyResult<RecordType>> {
-        throw new Error('Function not implemented.');
-    },
-    deleteMany: function <RecordType extends RaRecord = any>(resource: string, params: DeleteManyParams<RecordType>): Promise<DeleteManyResult<RecordType>> {
         throw new Error('Function not implemented.');
     }
 };

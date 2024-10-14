@@ -3,7 +3,7 @@ import { useMediaQuery, Theme } from '@mui/material';
 import {
     Edit, List, Datagrid, TextField, SimpleList, Create,
     TextInput, SimpleForm, NumberInput, required, DateInput, DateField,
-    NumberField
+    NumberField, DeleteButton as Delete
 } from 'react-admin';
 
 export const DonacionesEspecieList = () => {
@@ -61,3 +61,13 @@ export const DonacionesEspecieEdit = () => (
     </Edit>
 );
 
+export const DonacionesEspecieDelete = () => (
+    <Delete>
+        <SimpleForm>
+            <TextInput source="donorName" label="Nombre" />
+            <NumberInput source="amount" label="Cantidad" />
+            <DateInput source="date" label="Fecha" />
+            <TextInput source="event" label="Evento" />
+        </SimpleForm>
+    </Delete>
+);

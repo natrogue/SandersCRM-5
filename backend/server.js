@@ -266,6 +266,30 @@ app.put('/donaciones-especie/:id', authenticateToken, verifyRole('admin'), async
     }
 });
 
+// Ruta para actualizar una donación en línea
+app.put('/donaciones-linea/:id', authenticateToken, verifyRole('admin'), async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { donorName, amount, date, section } = req.body;
+
+        // Actualizar la donación con los nuevos valores
+        const updatedDonacion = await DonacionLinea.findByIdAndUpdate(id, {
+            donorName,
+            amount,
+            date,
+            section
+        }, { new: true });  // { new: true } devuelve el documento actualizado
+
+        if (!updatedDonacion) {
+            return res.status(404).json({ error: 'Donación no encontrada' });
+        }
+
+        res.status(200).json(updatedDonacion);
+    } catch (err) {
+        res.status(500).json({ error: 'Error al actualizar la donación' });
+    }
+});
+
 // Ruta para ver las donaciones del usuario (solo user)
 app.get('/user-donations', authenticateToken, verifyRole('user'), async (req, res) => {
     try {
@@ -273,6 +297,62 @@ app.get('/user-donations', authenticateToken, verifyRole('user'), async (req, re
         res.json(donaciones);
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+// Ruta para eliminar múltiples donaciones en línea
+app.delete('/donaciones-linea', authenticateToken, verifyRole('admin'), async (req, res) => {
+    try {
+        const { ids } = req.body; // Recibir los IDs del cuerpo de la solicitud
+        await DonacionLinea.deleteMany({ _id: { $in: ids } }); // Eliminar todos los registros con esos IDs
+
+        res.status(200).json({ message: 'Donaciones eliminadas exitosamente' });
+    } catch (err) {
+        res.status(500).json({ error: 'Error al eliminar las donaciones' });
+    }
+});
+
+// Ruta para eliminar múltiples donaciones en especie
+app.delete('/donaciones-especie', authenticateToken, verifyRole('admin'), async (req, res) => {
+    try {
+        const { ids } = req.body; // Recibir los IDs del cuerpo de la solicitud
+        await DonacionEspecie.deleteMany({ _id: { $in: ids } }); // Eliminar todos los registros con esos IDs
+
+        res.status(200).json({ message: 'Donaciones eliminadas exitosamente' });
+    } catch (err) {
+        res.status(500).json({ error: 'Error al eliminar las donaciones en especie' });
+    }
+});
+
+// Ruta para eliminar una donación en línea
+app.delete('/donaciones-linea/:id', authenticateToken, verifyRole('admin'), async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedDonacion = await DonacionLinea.findByIdAndDelete(id);
+
+        if (!deletedDonacion) {
+            return res.status(404).json({ error: 'Donación no encontrada' });
+        }
+
+        res.status(200).json({ message: 'Donación eliminada exitosamente' });
+    } catch (err) {
+        res.status(500).json({ error: 'Error al eliminar la donación' });
+    }
+});
+
+// Ruta para eliminar una donación en especie
+app.delete('/donaciones-especie/:id', authenticateToken, verifyRole('admin'), async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedDonacion = await DonacionEspecie.findByIdAndDelete(id);
+
+        if (!deletedDonacion) {
+            return res.status(404).json({ error: 'Donación no encontrada' });
+        }
+
+        res.status(200).json({ message: 'Donación eliminada exitosamente' });
+    } catch (err) {
+        res.status(500).json({ error: 'Error al eliminar la donación' });
     }
 });
 
