@@ -19,6 +19,8 @@
     "mongoose": "^8.6.1",
     "nodemailer": "^6.9.15",
     "nodemon": "^3.1.4",
+    "ra-i18n-polyglot": "^5.2.3",
+    "ra-language-spanish": "^1.0.0",
     "sendgrid": "^5.2.3"
   }
 }

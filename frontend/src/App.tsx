@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Admin, CustomRoutes, Resource } from 'react-admin'; 
-import authProvider from './authProvider';
-import dataProvider from './dataProvider';
+import authProvider from './providers/authProvider';
+import dataProvider from './providers/dataProvider';
 import Dashboard from './components/Dashboard';
 import LoginPage from './components/LoginPage';
 import AdminDashboard from './pages/AdminDashboard';  
@@ -13,6 +13,7 @@ import EstadisticasDonaciones from './pages/EstadisticasDonaciones';
 import { Layout } from './Layout';
 import theme from './customTheme'; 
 import RegisterPage from './components/RegisterPage';  // Importar la página de registro
+import { i18nProvider } from './providers/i18nProvider';  // Importar el proveedor de internacionalización
 
 const App = () => {
   const [role, setRole] = React.useState<string | null>(null);
@@ -35,6 +36,7 @@ const App = () => {
             <Admin 
               authProvider={authProvider}
               dataProvider={dataProvider}
+              i18nProvider={i18nProvider}
               theme={theme}
               dashboard={Dashboard}
               loginPage={LoginPage}
