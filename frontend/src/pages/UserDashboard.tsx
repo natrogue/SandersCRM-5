@@ -28,7 +28,7 @@ const UserDashboard = () => {
                 data: { donorName, amount: Number(amount), date: new Date().toISOString().split('T')[0] }
             });
 
-            notify('Donación creada exitosamente', { type: 'success' });
+            notify('Donación creada exitosamente, muchas gracias por tu aportación.', { type: 'success' });
 
             // Limpiar los campos del formulario
             setDonorName('');
@@ -126,7 +126,7 @@ const UserDashboard = () => {
                                 onClick={handleSubmit}
                                 disabled={loading} // Deshabilitar el botón mientras se procesa la donación
                             >
-                                {loading ? 'Procesando...' : 'Donar'}
+                                {loading ? 'Procesando...' : '¡Muchas gracias por tu donación!'}
                             </Button>
                         </Box>
                     </Paper>
