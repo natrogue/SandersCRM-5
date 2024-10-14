@@ -111,7 +111,7 @@ const EstadisticasDonaciones = () => {
             <Grid container spacing={3}>
                 {/* Gráfico de pastel */}
                 <Grid item xs={12} md={6}>
-                    <Paper sx={{ padding: 3 }}>
+                    <Paper sx={{ padding: 3, backgroundColor: '#f1f4f9' }}>
                         <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Proporción de Donaciones</Typography>
                         <ResponsiveContainer width="100%" height={300}>
                             <PieChart>
@@ -138,7 +138,7 @@ const EstadisticasDonaciones = () => {
 
                 {/* Gráfico de barras */}
                 <Grid item xs={12} md={6}>
-                    <Paper sx={{ padding: 3 }}>
+                    <Paper sx={{ padding: 3, backgroundColor: '#f1f4f9' }}>
                         <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Total de Cantidades Donadas</Typography>
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={dataForBarChart}>
@@ -155,7 +155,7 @@ const EstadisticasDonaciones = () => {
 
                 {/* Gráfico de área acumulada */}
                 <Grid item xs={12} md={6}>
-                    <Paper sx={{ padding: 3 }}>
+                    <Paper sx={{ padding: 3, backgroundColor: '#f1f4f9' }}>
                         <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Evolución de Donaciones</Typography>
                         <ResponsiveContainer width="100%" height={300}>
                             <AreaChart data={dataForAreaChart}>
@@ -182,7 +182,7 @@ const EstadisticasDonaciones = () => {
 
                 {/* Gráfico de radar */}
                 <Grid item xs={12} md={6}>
-                    <Paper sx={{ padding: 3 }}>
+                    <Paper sx={{ padding: 3, backgroundColor: '#f1f4f9' }}>
                         <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Comparación de Donaciones</Typography>
                         <ResponsiveContainer width="100%" height={300}>
                             <RadarChart outerRadius={90} data={dataForRadarChart}>

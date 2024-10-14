@@ -69,31 +69,36 @@ const theme = createTheme({
                     backgroundColor: '#90A6CC', // Background color for the sidebar
                     color: '#003a7e', // Text color in sidebar
                     paddingTop: '20px',
-                    overflow: 'visible', // Ensure content does not get cut off
+                    height: '100%', // Change this to '100%'
+                    minHeight: '100vh', // Ensure it covers the full viewport height
+                    position: 'fixed', // Keep the sidebar fixed while scrolling
+                    overflowY: 'auto', // Enable scrolling inside the sidebar
                     '& a': {
                         color: '#005f8a', // Link color in sidebar
-                        textDecoration: 'none', // Remove underline
-                        padding: '10px 15px', // Add padding to links
-                        display: 'block', // Make links block elements
-                        fontWeight: 'bold', // Make font bold
-                        transition: 'background-color 0.2s, font-size 0.2s, transform 0.2s', // Smooth transition for background color, font size, and transform
-                        borderRadius: '0 20px 20px 0', // Round right corners
+                        textDecoration: 'none',
+                        padding: '10px 15px',
+                        display: 'block',
+                        fontWeight: 'bold',
+                        transition: 'background-color 0.2s, font-size 0.2s, transform 0.2s',
+                        borderRadius: '0 200px 200px 0',
                         '&:hover': {
-                            backgroundColor: '#90a6cc', // Color on hover
-                            fontSize: '18px', // Increase font size on hover
-                            paddingLeft: '10px', // Shift to the right on hover
-                            transform: 'translateX(0px)', // Additional shift on hover
+                            backgroundColor: '#90a6cc', // Background color on hover
+                            fontSize: '18px',
+                            paddingLeft: '10px',
+                            transform: 'translateX(0px)',
                         },
-                        '&.Mui-selected': { // Active state for selected item
-                            backgroundColor: '#005f8a !important', // Color when selected
+                        '&.Mui-selected': {
+                            backgroundColor: '#90a6cc', // Match the hover background color
+                            color: '#005f8a', // Match the hover text color
                             fontSize: '18px', // Keep font size larger when selected
-                            paddingLeft: '20px', // Shift to the right when selected
-                            transform: 'translateX(5px)', // Additional shift when selected
+                            paddingLeft: '10px', // Shift to the right when selected
+                            transform: 'translateX(0px)', // Match the hover transform
                         },
                         '&:active': {
-                            backgroundColor: '#003a7e', // Color when pressed   
+                            backgroundColor: '#003a7e',
                         },
                     },
+                    
                 },
             },
         },
@@ -101,4 +106,5 @@ const theme = createTheme({
 });
 
 export default theme;
+
 

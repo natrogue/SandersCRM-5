@@ -5,18 +5,39 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography'; // Importar Typography de MUI
 import Grid from '@mui/material/Grid'; // Importar Grid de MUI
 
-const Sidebar = (props: any) => (
-  <RASidebar 
-    {...props} 
-    style={{ 
-      marginTop: '20px',
-      overflow: 'visible',
-      backgroundColor: '#C7D2E5', // Cambia el color de fondo aquí
-      borderRadius: '8px', // Esquinas redondeadas, si deseas
-      width: '250px', // Ajusta el ancho según sea necesario
-    }} 
-  />
-);
+import React, { useEffect, useRef, useState } from 'react';
+
+const Sidebar = (props: any) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [sidebarHeight, setSidebarHeight] = useState<string>('100vh');
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      // Calculate the height of the container and set the sidebar height
+      const containerHeight = container.clientHeight;
+      setSidebarHeight(`${containerHeight}px`);
+    }
+  }, [props]); // Recalculate height if props change
+
+  return (
+    <div ref={containerRef} style={{ display: 'flex', height: '100%' }}>
+      <RASidebar 
+        {...props} 
+        style={{ 
+          marginTop: '20px',
+          overflow: 'visible',
+          backgroundColor: '#C7D2E5',
+          borderRadius: '8px',
+          width: '250px',
+          height: sidebarHeight, // Use dynamic height
+        }} 
+      />
+      {/* Add main content here */}
+    </div>
+  );
+};
+
 
 const Footer = () => (
   <Box
