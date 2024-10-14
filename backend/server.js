@@ -75,6 +75,36 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Ruta para registrar nuevos usuarios
+app.post('/register', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Verificar si el usuario ya existe
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: 'El usuario ya existe' });
+        }
+
+        // Hashear la contraseña
+        const hashedPassword = await bcrypt.hash(password, 10); // 10 salt rounds
+
+        // Crear un nuevo usuario con rol predeterminado 'user'
+        const newUser = new User({
+            email,
+            password: hashedPassword,
+            role: 'user' // Asegurarse de que el rol sea 'user'
+        });
+
+        // Guardar el nuevo usuario en la base de datos
+        await newUser.save();
+
+        res.status(201).json({ message: 'Usuario registrado exitosamente' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al registrar el usuario' });
+    }
+});
+
 // Protected route with middleware
 app.get('/protected-data', authenticateToken, (req, res) => {
     res.json({ message: 'This is protected data', user: req.user });

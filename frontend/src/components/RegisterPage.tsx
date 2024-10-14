@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
-import { useLogin, useNotify } from 'react-admin';
 import { TextField, Button, Container, Box, Paper, Grid, CircularProgress } from '@mui/material';
+import { useNotify } from 'react-admin';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
-    const login = useLogin();
-    const notify = useNotify();
-    const navigate = useNavigate();
+const RegisterPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const notify = useNotify();
+    const navigate = useNavigate();
 
-    const submit = async (e: React.FormEvent) => {
+    const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+
         try {
-            await login({ email, password });
+            const response = await fetch('https://localhost:5001/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),  // Enviar email y contraseña
+            });
 
-            const auth = JSON.parse(localStorage.getItem('auth') || '{}');
-            const userRole = auth.role;
-
-            if (userRole === 'admin') {
-                navigate('/admin-dashboard');
-            } else if (userRole === 'user') {
-                navigate('/user-dashboard');
+            if (response.ok) {
+                notify('Usuario registrado con éxito', { type: 'success' });
+                navigate('/login');  // Redirigir al login tras el registro
             } else {
-                navigate('/');
+                const data = await response.json();
+                notify(data.error || 'Error al registrar usuario', { type: 'error' });
             }
-
-            setLoading(false);
         } catch (error) {
-            notify('Email o contraseña incorrecto');
+            notify('Error en la conexión', { type: 'error' });
+        } finally {
             setLoading(false);
         }
     };
@@ -50,10 +50,7 @@ const LoginPage = () => {
         >
             <Paper elevation={3} sx={{ padding: 4, backgroundColor: '#003a7e', position: 'relative' }}>
                 <Grid container direction="column" alignItems="center">
-                    {/* Agrega el logo */}
-                    <Box component="img" src="../images/logoSanders.png" alt="Logo Fundación Sanders" sx={{ width: '270px', mb: 3 }} />
-
-                    <Box component="form" onSubmit={submit} sx={{ mt: 1 }}>
+                    <Box component="form" onSubmit={handleRegister} sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             fullWidth
@@ -66,7 +63,7 @@ const LoginPage = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             InputProps={{
-                                style: { backgroundColor: '#fff' }, // Fondo blanco
+                                style: { backgroundColor: '#fff' },
                             }}
                         />
                         <TextField
@@ -76,12 +73,11 @@ const LoginPage = () => {
                             placeholder="Contraseña"
                             type="password"
                             id="password"
-                            autoComplete="current-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             InputProps={{
-                                style: { backgroundColor: '#fff' }, // Fondo blanco
+                                style: { backgroundColor: '#fff' },
                             }}
                         />
                         <Button
@@ -93,21 +89,8 @@ const LoginPage = () => {
                             disabled={loading}
                             startIcon={loading && <CircularProgress size={20} />}
                         >
-                            {loading ? 'Entrando...' : 'Iniciar Sesión'}
+                            {loading ? 'Registrando...' : 'Registrarse'}
                         </Button>
-
-                        {/* Botón de Registro */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <Button
-                            fullWidth
-                            variant="outlined"
-                            color="secondary"
-                            sx={{ mt: 2, width: '50%' }}
-                            onClick={() => navigate('/register')}  // Redirige a la página de registro
-                        >
-                            ¿No tienes cuenta? ¡Regístrate aquí!
-                        </Button>
-                        </Box>
                     </Box>
                 </Grid>
             </Paper>
@@ -115,4 +98,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;
