@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "start": "react-scripts start",
     "build": "vite build",
     "serve": "vite preview",
     "type-check": "tsc --noEmit",

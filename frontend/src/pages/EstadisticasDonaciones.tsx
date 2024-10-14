@@ -147,7 +147,7 @@ const EstadisticasDonaciones = () => {
                                 <YAxis />
                                 <Tooltip />
                                 <Legend />
-                                <Bar dataKey="amount" fill="#f17f29" />
+                                <Bar dataKey="amount" name="Cantidad" fill="#f17f29" />
                             </BarChart>
                         </ResponsiveContainer>
                     </Paper>

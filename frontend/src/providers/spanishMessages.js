@@ -1,6 +1,8 @@
+// spanishMessages.ts
 const spanishMessages = {
     ra: {
         action: {
+            profile: 'Perfil',
             delete: 'Eliminar',
             show: 'Mostrar',
             list: 'Lista',
@@ -8,11 +10,12 @@ const spanishMessages = {
             create: 'Crear',
             edit: 'Editar',
             cancel: 'Cancelar',
-            profile: 'Perfil',
             refresh: 'Actualizar',
             export: 'Exportar',
             add: 'Añadir',
             back: 'Atrás',
+            bulk_actions: '1 elemento seleccionado |||| %{smart_count} elementos seleccionados',
+            undo: 'Deshacer',
         },
         message: {
             yes: 'Sí',
@@ -25,7 +28,7 @@ const spanishMessages = {
         },
         navigation: {
             page_rows_per_page: 'Filas por página',
-            page_range_info: '%{from}-%{to} de %{count}',
+            page_range_info: 'Total: %{total}',
             next: 'Siguiente',
             prev: 'Anterior',
             no_results: 'No se encontraron resultados',
