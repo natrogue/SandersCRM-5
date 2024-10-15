@@ -13,7 +13,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.7",
-    "ra-data-json-server": "^5.1.0",
+    "ra-data-json-server": "^5.2.1",
     "react": "^18.3.0",
     "react-admin": "^5.1.0",
     "react-dom": "^18.3.0",
